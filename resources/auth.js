@@ -31,6 +31,7 @@ module.exports = {
 	  var payload = {
 	    sub: user._id,
 	    email: user.email,
+	    username: user.username,
 	    fullname: user.fullname,
 	    iat: moment().unix(),
 	    exp: moment().add(14, 'days').unix()

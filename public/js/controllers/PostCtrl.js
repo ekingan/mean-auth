@@ -1,6 +1,6 @@
 'use strict';
 
-/* USER Controllers */
+/* POST Controllers */
 
 angular.module('basic-auth')
   .controller('ProfileCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
@@ -19,12 +19,4 @@ angular.module('basic-auth')
 	  		$location.path('/profile');
 	  	});
   	};
-  }])
-  .controller('PostCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', function($scope, $http, $auth, Auth, $location) {
-    //create new POST
-    $scope.createPost = function () {
-      $http.post('/api/posts', $scope.post).then(function (data) {
-        $scope.post = data.data;  
-      });
-    };
   }]);

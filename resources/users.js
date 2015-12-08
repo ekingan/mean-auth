@@ -21,8 +21,10 @@ module.exports = function(app) {
         return res.status(400).send({ message: 'User not found' });
       }
       user.email = req.body.email || user.email;
+      user.username = req.body.username || user.username;
       user.save(function(err) {
-        res.status(200).end();
+        console.log(user);
+        res.send(user);
       });
     });
   });
@@ -33,7 +35,7 @@ module.exports = function(app) {
         return res.status(401).send({ message: 'Wrong email or password' });
       }
       user.comparePassword(req.body.password, function(err, isMatch) {
-        console.log(isMatch)
+        console.log(isMatch);
         if (!isMatch) {
           return res.status(401).send({ message: 'Wrong email or password' });
         }
@@ -50,6 +52,7 @@ module.exports = function(app) {
       
       var user = new User({
         email: req.body.email,
+        username: req.body.username,
         password: req.body.password
       });
 
